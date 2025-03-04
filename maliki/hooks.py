@@ -245,3 +245,76 @@ override_doctype_class = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+fixtures = [
+    {
+        "doctype": "Custom Field",
+        "filters": [
+            
+            [
+                "name",
+                "in",
+                (
+                    "Stock Entry-custom_additional_costs_je",
+					"Sales Invoice-custom_handling_fee_je",
+					"Sales Invoice-custom_total_handling_fees",
+					"Sales Invoice Item-custom_handling_fee_rate",
+					"Stock Entry-custom_issue_type",
+					"Stock Entry-custom_issues_qty",
+					"Stock Entry-custom_transfer_status",
+					"Stock Entry-custom_mobile",
+					"Stock Entry-custom_column_break_wa4ew",
+					"Stock Entry-custom_flight_date",
+					"Stock Entry-custom_passenger",
+					"Stock Entry-custom_معلومات_الرحلة",
+                ),
+            ]
+        ]
+    },
+    {
+        "doctype": "Property Setter",
+        "filters": [
+            
+            [
+                "name",
+                "in",
+                (
+                    "Sales Invoice-accounting_dimensions_section-hidden",
+					"Sales Invoice-is_pos-default",
+					"Sales Invoice-section_break_104-hidden",
+					"Sales Invoice-time_sheet_list-hidden",
+					"Sales Invoice-packing_list-hidden",
+					"Sales Invoice-pricing_rule_details-hidden",
+					"Sales Invoice-sec_tax_breakup-hidden",
+					"Sales Invoice-section_break_43-hidden",
+					"Sales Invoice-section_break_40-hidden",
+					"Sales Invoice-taxes_section-hidden",
+					"Sales Invoice-more_info_tab-hidden",
+					"Sales Invoice-terms_tab-hidden",
+					"Sales Invoice-loyalty_points_redemption-hidden",
+					"Sales Invoice-advances_section-hidden",
+					"Sales Invoice-payments_section-collapsible_depends_on",
+					"Sales Invoice-payments_section-collapsible",
+					"Sales Invoice-contact_and_address_tab-hidden",
+					"Stock Entry-main-title_field",
+					"Stock Entry-bom_info_section-hidden",
+					"Stock Entry-section_break_7qsm-hidden",
+					"Stock Entry-source_warehouse_address-hidden",
+					"Stock Entry-source_address_display-hidden",
+					"Stock Entry-target_warehouse_address-hidden",
+					"Stock Entry-target_address_display-hidden",
+					"Stock Entry-section_break_19-hidden",
+					"Stock Entry-supplier_info_tab-hidden",
+					"Stock Entry-accounting_dimensions_section-hidden",
+					"Stock Entry-other_info_tab-hidden",
+					"Stock Entry-tab_connections-hidden",
+					"Stock Entry-per_transferred-in_list_view",
+					"Stock Entry-from_warehouse-in_list_view",
+					"Stock Entry-purpose-in_list_view",
+					"Stock Entry-stock_entry_type-in_list_view",
+					"Stock Entry-to_warehouse-in_list_view",
+					"Stock Entry-is_return-in_list_view"
+                ),
+            ]
+        ]
+    }
+]
