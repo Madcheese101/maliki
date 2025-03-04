@@ -4,18 +4,15 @@ from erpnext.stock.doctype.stock_entry.stock_entry import (StockEntry)
 from frappe.utils import flt
 
 class CustomStockEntry(StockEntry):
-    @frappe.whitelist()
-    def add_additional_costs(self):
-        shipping_account = frappe.db.get_single_value("Maliki Settings", "shipping_account")
-        # currency = frappe.db.get_value("Account", shipping_account, "currency")
-        # frappe.msgprint(shipping_account)
-
-        self.append("additional_costs", 
-                    {
-                        'expense_account': shipping_account,
-                        'description': 'تكلفة النقل',
-                        'amount': 0
-                    })
+    def on_submit(self):
+        self.register_additional_costs_je()
+        super().on_submit()
+    
+    def on_cancel(self):
+        super().on_cancel()
+        if self.additional_costs_je:
+            doc = frappe.get_doc("Journal Entry", self.additional_costs_je)
+            doc.cancel()
 
     def before_submit(self):
         tr_warehouse = frappe.db.get_single_value("Maliki Settings", "tr_warehouse")
@@ -34,7 +31,45 @@ class CustomStockEntry(StockEntry):
 
         parent_doc.add_comment('Comment', f'تم نحويل عدد {total_qty} من المنتجات لمخزن الأضرار بسبب {self.issue_type}')
         frappe.db.commit()
-        
+    
+    @frappe.whitelist()
+    def register_additional_costs_je(self):
+        if self.total_additional_costs > 0:
+            settings_doc = frappe.get_doc("Maliki Settings")
+            shipping_account = settings_doc.shipping_account
+            tr_account = settings_doc.tr_account
+
+            if not shipping_account:
+                frappe.throw("Shipping Costs Account must be set in Maliki Settings")
+            if not tr_account:
+                frappe.throw("Turkey Account must be set in Maliki Settings")
+            
+            doc = frappe.new_doc('Journal Entry')
+            title = f"مصاريف شحن {self.name}"
+
+            doc.voucher_type = "Journal Entry"
+            # doc.user_remark = self.notes
+            doc.posting_date = self.posting_date
+
+            # money to account
+            to_ = {"account":shipping_account,
+                    # "cost_center": self.cost_center,
+                    "debit_in_account_currency": self.total_additional_costs}
+            # money from account
+            from_ = {"account":tr_account,
+                    # "cost_center": self.cost_center,
+                    "credit_in_account_currency": self.total_additional_costs}
+            
+            doc.append("accounts",to_)
+            doc.append("accounts",from_)
+
+            doc.save(ignore_permissions=True)
+            doc.submit()
+
+            self.db_set('additional_costs_je', doc.name)
+            frappe.msgprint(f"Journal Entry {doc.name} created")
+        else:
+            frappe.msgprint("لا يوجد تكلفة شحن")
 
 
 @frappe.whitelist()

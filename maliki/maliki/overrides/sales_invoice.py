@@ -25,8 +25,10 @@ class CustomSalesInvoice(SalesInvoice):
             handling_fee_account = settings_doc.handling_fee_account
             tr_account = settings_doc.tr_account
 
-            if not handling_fee_account or not tr_account:
+            if not handling_fee_account:
                 frappe.throw("Handling Fee Account must be set in Maliki Settings")
+            if not tr_account:
+                frappe.throw("Turkey Account must be set in Maliki Settings")
             
             doc = frappe.new_doc('Journal Entry')
             title = f"عمولة {self.name}"

@@ -69,6 +69,14 @@ frappe.ui.form.on('Stock Entry', {
         }
     },
 	async refresh(frm) {
+        if(!frm.doc.additional_costs_je && frm.doc.docstatus === 1){
+            frm.add_custom_button(__("تسجيل مصاريف الشحن"), function () {
+                frm.call('register_additional_costs_je').then(() => {
+                    frm.refresh();
+                })
+            });
+        }
+
 		settings = await frappe.db.get_doc('Maliki Settings', null);
         
         const per_transferred = frm.doc.per_transferred;
