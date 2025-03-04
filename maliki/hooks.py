@@ -314,7 +314,24 @@ fixtures = [
 					"Stock Entry-purpose-in_list_view",
 					"Stock Entry-stock_entry_type-in_list_view",
 					"Stock Entry-to_warehouse-in_list_view",
-					"Stock Entry-is_return-in_list_view"
+					"Stock Entry-is_return-in_list_view",
+                    "Purchase Order-more_info_tab-hidden",
+					"Purchase Order-terms_tab-hidden",
+					"Purchase Order-drop_ship-hidden",
+					"Purchase Order-address_and_contact_tab-hidden",
+					"Purchase Order-sec_tax_breakup-hidden",
+					"Purchase Order-totals-hidden",
+					"Purchase Order-section_break_52-hidden",
+					"Purchase Order-taxes_section-hidden",
+					"Purchase Order-raw_material_details-hidden",
+					"Purchase Order-section_break_48-hidden",
+					"Purchase Invoice-raw_materials_supplied-hidden",
+					"Purchase Invoice-pricing_rule_details-hidden",
+					"Purchase Invoice-sec_tax_breakup-hidden",
+					"Purchase Invoice-tax_withheld_vouchers_section-hidden",
+					"Purchase Invoice-totals-hidden",
+					"Purchase Invoice-section_break_51-hidden",
+					"Purchase Invoice-taxes_section-hidden"
                 ),
             ]
         ]
