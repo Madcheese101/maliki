@@ -45,7 +45,7 @@ class CustomStockEntry(StockEntry):
                 frappe.throw("Turkey Account must be set in Maliki Settings")
             
             doc = frappe.new_doc('Journal Entry')
-            title = f"مصاريف شحن {self.name}"
+            doc.title = f"مصاريف شحن {self.name}"
 
             doc.voucher_type = "Journal Entry"
             # doc.user_remark = self.notes

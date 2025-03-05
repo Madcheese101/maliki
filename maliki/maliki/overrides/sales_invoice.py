@@ -31,7 +31,7 @@ class CustomSalesInvoice(SalesInvoice):
                 frappe.throw("Turkey Account must be set in Maliki Settings")
             
             doc = frappe.new_doc('Journal Entry')
-            title = f"عمولة {self.name}"
+            doc.title = f"عمولة {self.name}"
 
             doc.voucher_type = "Journal Entry"
             # doc.user_remark = self.notes
