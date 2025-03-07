@@ -256,10 +256,10 @@ fixtures = [
                 "name",
                 "in",
                 (
-                    "Stock Entry-custom_additional_costs_je",
 					"Sales Invoice-custom_handling_fee_je",
 					"Sales Invoice-custom_total_handling_fees",
 					"Sales Invoice Item-custom_handling_fee_rate",
+                    "Stock Entry-custom_additional_costs_je",
 					"Stock Entry-custom_issue_type",
 					"Stock Entry-custom_issues_qty",
 					"Stock Entry-custom_transfer_status",
@@ -268,6 +268,7 @@ fixtures = [
 					"Stock Entry-custom_flight_date",
 					"Stock Entry-custom_passenger",
 					"Stock Entry-custom_معلومات_الرحلة",
+                    "Stock Entry-custom_title"
                 ),
             ]
         ]
@@ -315,6 +316,7 @@ fixtures = [
 					"Stock Entry-stock_entry_type-in_list_view",
 					"Stock Entry-to_warehouse-in_list_view",
 					"Stock Entry-is_return-in_list_view",
+                    "Stock Entry-main-title_field",
                     "Purchase Order-more_info_tab-hidden",
 					"Purchase Order-terms_tab-hidden",
 					"Purchase Order-drop_ship-hidden",
@@ -331,7 +333,14 @@ fixtures = [
 					"Purchase Invoice-tax_withheld_vouchers_section-hidden",
 					"Purchase Invoice-totals-hidden",
 					"Purchase Invoice-section_break_51-hidden",
-					"Purchase Invoice-taxes_section-hidden"
+					"Purchase Invoice-taxes_section-hidden",
+                    "Purchase Invoice-accounting_dimensions_section-hidden",
+                    "Purchase Invoice-payments_section-collapsible",
+                    "Purchase Invoice-address_and_contact_tab-hidden",
+                    "Purchase Invoice-terms_tab-hidden",
+                    "Purchase Invoice-more_info_tab-hidden",
+                    "Journal Entry Account-debit_in_account_currency-label",
+					"Journal Entry Account-credit_in_account_currency-label",
                 ),
             ]
         ]
