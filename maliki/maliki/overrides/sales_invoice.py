@@ -53,6 +53,6 @@ class CustomSalesInvoice(SalesInvoice):
             doc.submit()
 
             self.db_set('handling_fee_je', doc.name)
-            frappe.msgprint(f"Journal Entry {doc.name} created")
+            frappe.msgprint(f"تم تسجيل العمولة {doc.name}")
         else:
             frappe.msgprint("No handling fee to register")
