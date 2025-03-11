@@ -97,7 +97,7 @@ frappe.ui.form.on('Stock Entry', {
             return;
         }
         
-        if(parent_per_transferred_value > 0){
+        if(frm.doc.outgoing_stock_entry && parent_per_transferred_value > 0){
             return;
         }
         
