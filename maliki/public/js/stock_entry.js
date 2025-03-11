@@ -5,14 +5,14 @@ frappe.ui.form.on('Stock Entry', {
     before_save(frm) {
         if(frm.doc.outgoing_stock_entry){
             if(frm.doc.to_warehouse === settings['damaged_warehouse']){
-                frm.set_value('stock_title', 'الى مخزن الأضرار')
+                frm.set_value('stock_title', `الى مخزن الأضرار - ${frm.doc.passenger}`)
             }
             else{
-                frm.set_value('stock_title', 'استلام في تركيا')
+                frm.set_value('stock_title', `استلام في تركيا - ${frm.doc.passenger}`)
             }
         }
         else{
-            frm.set_value('stock_title', 'الى النقل')
+            frm.set_value('stock_title', `الى النقل - ${frm.doc.passenger}`)
         }
     },
     async before_submit(frm) {
